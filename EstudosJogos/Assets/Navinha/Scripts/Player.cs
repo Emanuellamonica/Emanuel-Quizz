@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,7 +10,8 @@ public class Player : MonoBehaviour
     [Header("Componentes")]
     public Rigidbody2D corpoPlayer;
     public BoxCollider2D colisorPalyer;
-    
+    public Animator animatorPlayer;
+
     [Header("Movimentação")]
     public float inputX;
     public float inputY;
@@ -53,6 +55,24 @@ public class Player : MonoBehaviour
         {
             Atirar();
         }
+
+        if (inputX != 0)
+        {
+            animatorPlayer.SetInteger("Player", 1);
+            if (inputX > 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
+        else
+        {
+            animatorPlayer.SetInteger("Player", 0);
+        }
+
     }
 
     private void FixedUpdate()
