@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instancia;
+
+    [Header("Menu")]
+    public GameObject painelInicio;
+    public GameObject painelGameplay;
+    public GameObject painelGameOver;
 
     [Header("Pontuação")]
     public int score;
@@ -25,8 +31,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(GerarAlan());
+        painelInicio.SetActive(true);
+        painelGameplay.SetActive(false);
+        painelGameOver.SetActive(false);
 
+    }
+
+    public void IniciarJogo()
+    {
+        painelInicio.SetActive(false);
+        painelGameplay.SetActive(true);
+        StartCoroutine(GerarAlan());
     }
 
     // Update is called once per frame
@@ -48,4 +63,20 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(taxaAlan);
         StartCoroutine(GerarAlan());
     }
+
+    public void GameOver()
+    {
+        StartCoroutine(FinalizarJogo());
+    }
+
+    IEnumerator FinalizarJogo()
+    {
+        painelGameplay.SetActive (false);
+        painelGameOver.SetActive (true);
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(0);
+
+    }
+
+
 }

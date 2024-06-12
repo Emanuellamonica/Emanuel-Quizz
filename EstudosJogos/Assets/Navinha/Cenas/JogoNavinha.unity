@@ -662,6 +662,18 @@ MonoBehaviour:
   taxaTiro: 0.3
   tiroPlayer: {fileID: 7510344134255077285, guid: a75af1f782457a64e84c9dd719cff7cb, type: 3}
   miraPlayer: {fileID: 1488603920}
+  powerEsquerda: {fileID: 1435554608}
+  powerDireita: {fileID: 1823816703}
+  tiroPowerUp: {fileID: 4867923595564983085, guid: a75af1f782457a64e84c9dd719cff7cb, type: 3}
+  powerUpAtivo: 0
+  powerUp2: 0
+  inputPowerUp2: 0
+  alansAtivos: []
+  taxaPower2: 0
+  podePower2: 0
+  vidaMaxima: 5
+  vidaAtual: 5
+  taxaInvencivel: 0
 --- !u!95 &437935170
 Animator:
   serializedVersion: 5
